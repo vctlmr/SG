@@ -1,5 +1,5 @@
 import { Typography } from 'antd';
-import { useLoaderData, useLocation, useParams } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import { Card } from 'antd';
 import { ProjectData } from '../types/ProjectData';
 
@@ -9,7 +9,6 @@ const { Title } = Typography;
 export const Project = () => {
     const { id } = useParams();
     const project = useLoaderData() as ProjectData;
-    console.log(project);
 
     return (
         <div>

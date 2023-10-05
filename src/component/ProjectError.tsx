@@ -4,7 +4,7 @@ import { Typography } from "antd"
 const { Title } = Typography;
 
 export const ProjectError = () => {
-    const error = useRouteError()
+    const error = useRouteError() // Will allow error handling
 
     return (
         <div className="error-container">

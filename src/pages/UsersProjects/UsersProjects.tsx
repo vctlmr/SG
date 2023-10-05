@@ -76,7 +76,6 @@ const onChange: TableProps<ProjectData>['onChange'] = (pagination, filters, sort
 };
 
 export const UsersProjects = () => {
-    // throw new Error('Error');
     const [projects, setProjects] = useState(([] as ProjectData[]));
     const [datasource, setDataSource] = useState(([] as ProjectDataFormat[]));
     const [isModalOpen, setIsModalOpen] = useState(false);
