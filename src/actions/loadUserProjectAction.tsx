@@ -8,10 +8,6 @@ export const loadUserProjectAction: ActionFunction = async () => {
         const response = await axios.get('http://localhost:3001/projects', { cancelToken: cancelToken.token });
         return response.data;
     } catch (error) {
-        console.error('Error:', error);
-    }
-
-    return () => {
-        cancelToken.cancel();
+        throw Error("Error loading Data")
     }
 }

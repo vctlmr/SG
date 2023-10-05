@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Button, Space, Typography, Table, Form as AntdForm, Input, Select, Modal } from 'antd';
 import type { ColumnsType, TableProps } from 'antd/es/table';
-import { ProjectData } from '../types/ProjectData';
+import { ProjectData } from '../../types/ProjectData';
 import { Link, useLoaderData, Form as ReactRouterForm, useSubmit } from 'react-router-dom';
-import { ProjectDataFormat } from '../types/ProjectDataFormat';
+import { ProjectDataFormat } from '../../types/ProjectDataFormat';
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -63,7 +63,7 @@ const ProjectColumns: ColumnsType<ProjectData> = [
         key: 'action',
         render: (project: ProjectData) =>
         (
-            <ReactRouterForm method="delete" action="/" replace>
+            <ReactRouterForm method="delete" action={`/project/delete/${project.id}`} replace>
                 <Button type="primary" htmlType='submit'>Supprimer</Button>
                 <input type="hidden" name="id" value={project.id} hidden readOnly />
             </ReactRouterForm>
@@ -76,6 +76,7 @@ const onChange: TableProps<ProjectData>['onChange'] = (pagination, filters, sort
 };
 
 export const UsersProjects = () => {
+    // throw new Error('Error');
     const [projects, setProjects] = useState(([] as ProjectData[]));
     const [datasource, setDataSource] = useState(([] as ProjectDataFormat[]));
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -105,7 +106,7 @@ export const UsersProjects = () => {
             .validateFields()
             .then((values) => submit(values, {
                 method: "post",
-                action: "/create/project"
+                action: `/project/create`
             }))
             .then(() => {
                 form.resetFields();

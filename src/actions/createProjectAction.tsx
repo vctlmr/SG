@@ -13,5 +13,5 @@ export const createProjectAction: ActionFunction = async ({ request }) => {
         console.error('Error:', error);
     }
 
-    return redirect('/');
+    return redirect('/projects');
 }
